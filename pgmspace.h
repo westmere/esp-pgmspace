@@ -3,25 +3,20 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <stdarg.h>
 
-//#define __ets__
-//#ifdef __ets__
+#ifdef __ets__
 
-//#include "ets_sys.h"
-//#include "osapi.h"
+#include "ets_sys.h"
+#include "osapi.h"
+#else
 #include "esp_common.h"
+#endif
 
 #define PROGMEM     ICACHE_RODATA_ATTR
 #define PGM_P  		const char *
 #define PGM_VOID_P  const void *
 #define PSTR(s) (__extension__({static const char __c[] PROGMEM = (s); &__c[0];}))
-//#else //__ets__
-//#define PROGMEM
-//#define PGM_P  		const char *
-//#define PGM_VOID_P  const void *
-//#define PSTR(s)     (s)
-//
-//#endif // __ets__
 
 
 #ifdef __cplusplus
