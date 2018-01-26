@@ -240,12 +240,11 @@ int printf_P(PGM_P formatP, ...) {
     va_start(arglist, formatP);
 
     size_t fmtLen = strlen_P(formatP);
-    char* format = new char[fmtLen + 1];
+    char format[fmtLen + 1];
     strcpy_P(format, formatP);
+    format[fmtLen] = '\0';
 
     ret = vprintf(format, arglist);
-
-    delete[] format;
 
     va_end(arglist);
     return ret;
@@ -277,12 +276,11 @@ int vsnprintf_P(char* str, size_t strSize, PGM_P formatP, va_list ap) {
     int ret;
 
     size_t fmtLen = strlen_P(formatP);
-    char* format = new char[fmtLen + 1];
+    char format[fmtLen + 1];
     strcpy_P(format, formatP);
+    format[fmtLen] = '\0';
 
     ret = vsnprintf(str, strSize, format, ap);
-
-    delete[] format;
 
     return ret;
 }
